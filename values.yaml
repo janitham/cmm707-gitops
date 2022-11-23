@@ -1,0 +1,14 @@
+global:
+  namespace: pactbroker-dev
+  storage:
+    size: 10Gi
+    name: pact-pg-pvc
+    role: node-role.cambio.se/storage-node 
+  postgres:
+    username: "postgres"
+    database: postgres
+    port: '5432'
+    host: 'postgres.pactbroker-dev.svc.cluster.local'
+  pactbroker:
+    route:
+      host: pactbrokerdev.devops.cambio.se
