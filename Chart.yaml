@@ -7,3 +7,6 @@ appVersion: "0.1.0"
 dependencies:
   - name: postgres
     version: 0.1.0
+  - name: postgres
+    version: "0.1.0"
+    repository: "s3://cmm707"
