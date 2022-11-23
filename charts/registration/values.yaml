@@ -1,5 +1,5 @@
 image:
-  registry: docker.devops.cambio.se
+  registry: docker
   repository: bitnami
   tag: 14.4.0-debian-11-r0
 
