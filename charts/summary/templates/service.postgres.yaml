@@ -10,5 +10,5 @@ spec:
     app.kubernetes.io/instance: summary
     app.kubernetes.io/name: summary
   ports:
-  - port: 5432
+  - port: 4444
     targetPort: 5432
