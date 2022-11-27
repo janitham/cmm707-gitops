@@ -4,6 +4,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "4"
   name: registration
+  namespace: {{ include "registration.namespace" . }}
   labels:
     app: registration
 spec:
