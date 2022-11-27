@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: registration
-          image: registration-service:0.1.0-dev.4.uncommitted_8754f5d
+          image: registration-service:{{ .Values.tag }}
           env:
             - name: SPRING_DATA_MONGODB_HOST
               value: mongodb.mongodb.svc.cluster.local
