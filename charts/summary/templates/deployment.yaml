@@ -6,6 +6,7 @@ metadata:
   name: summary
   namespace: {{ include "registration.namespace" . }}
   labels:
+    version: {{ .Values.image.tag }}
     app: summary
 spec:
   replicas: 1
