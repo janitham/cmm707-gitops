@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: registration
+  labels:
+    app: registration
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: registration
+  template:
+    metadata:
+      labels:
+        app: registration
+    spec:
+      containers:
+        - name: registration
+          image: registration-service:0.1.0-dev.4.uncommitted_8754f5d
+          env:
+            - name: SPRING_DATA_MONGODB_HOST
+              value: mongodb
+          ports:
+            - containerPort: 8080
