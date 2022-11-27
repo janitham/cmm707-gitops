@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
+  name: summary
+  namespace: {{ include "summary.namespace" . }}
+  labels:
+    app: summary
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: summary
+  template:
+    metadata:
+      labels:
+        app: summary
+    spec:
+      containers:
+        - name: summary
+          image: summary-service:0.1.0-dev.2.uncommitted_416b946
+          env:
+            - name: SPRING_DATA_MONGODB_HOST
+              value: mongodb.mongodb.svc.cluster.local
+            #- name: SPRING_DATA_MONGODB_USERNAME
+            #  value: admin
+            #- name: SPRING_DATA_MONGODB_PASSWORD
+            #  value: admin
+          ports:
+            - containerPort: 8080
