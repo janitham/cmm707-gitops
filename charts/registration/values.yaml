@@ -1,7 +1,8 @@
 image:
   registry: docker
   repository: bitnami
-  tag: 0.1.0-dev.18.uncommitted+a007456 
+  tag: 0.1.0-dev.18.uncommitted_a007456
+
 
 
 probe:
