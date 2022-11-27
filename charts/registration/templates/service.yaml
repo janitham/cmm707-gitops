@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+  labels:
+    app: registration
+    app.kubernetes.io/instance: example-app
+  name: registration
+  namespace: {{ include "registration.namespace" . }}
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: registration
+status:
+  loadBalancer: {}
