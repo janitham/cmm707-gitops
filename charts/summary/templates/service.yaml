@@ -7,7 +7,7 @@ metadata:
     app: summary
     app.kubernetes.io/instance: example-app
   name: summary
-  namespace: {{ include "summary.namespace" . }}
+  namespace: {{ include "registration.namespace" . }}
 spec:
   ports:
     - port: 8080
