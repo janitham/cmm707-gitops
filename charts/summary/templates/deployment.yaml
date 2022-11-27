@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: summary
-          image: summary-service:0.1.0-dev.2.uncommitted_416b946
+          image: "summary-service:{{ .Values.image.tag }}"
           env:
             - name: SPRING_DATA_MONGODB_HOST
               value: mongodb.mongodb.svc.cluster.local
