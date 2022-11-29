@@ -5,7 +5,7 @@ metadata:
   namespace: {{ include "registration.namespace" . }}
 data:
   registration-test-suite.py: "import requests\r\nimport json\r\n\r\nSERVICE_NAME
-    = \"registration\"\r\nBUILD_VERSION = \"\"\r\nDEPLOYMENT_PORT = \"8080\"\r\nHOST=\"localhost\"\r\n\r\ndefaultPayload
+    = \"registration\"\r\nBUILD_VERSION = \"\"\r\nDEPLOYMENT_PORT = \"8080\"\r\nHOST=\"registration\"\r\n\r\ndefaultPayload
     = json.dumps({\r\n      \"name\": \"charurika\",\r\n      \"description\": \"Indian\"\r\n})\r\n
     \   \r\nheaders = {\r\n  'Content-Type': 'application/json'\r\n}\r\n\r\nclass
     Tester:\r\n    outputJson = None\r\n\r\n    def __init__(self):\r\n       self.msg
@@ -23,7 +23,7 @@ data:
     == \"__main__\":\r\n    tester = Tester()\r\n    tester.createVoter()\r\n    tester.updateUser()\r\n
     \   tester.deleteUser()\r\n    print(\"Successfully ran the tests....\")"
   summary-test-suite.py: "import requests\r\nimport json\r\n\r\nSERVICE_NAME = \"summary\"\r\nBUILD_VERSION
-    = \"\"\r\nDEPLOYMENT_PORT = \"8081\"\r\nHOST=\"localhost\"\r\n\r\nheaders = {\r\n
+    = \"\"\r\nDEPLOYMENT_PORT = \"8081\"\r\nHOST=\"summary\"\r\n\r\nheaders = {\r\n
     \ 'Content-Type': 'application/json'\r\n}\r\n\r\nclass Tester:\r\n    outputJson
     = None\r\n\r\n    def __init__(self):\r\n       self.msg = \"Default constructor\"\r\n
     \      \r\n    def createdSummary(self):\r\n        url = \"http://\"+HOST+\":\"+DEPLOYMENT_PORT+\"/summary/created\"\r\n
