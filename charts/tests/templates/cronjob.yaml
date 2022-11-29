@@ -19,11 +19,11 @@ spec:
               #  - --version
               volumeMounts:
                 - name: "test"
-                  mountPath: "/"
-                  subPath: "registration-test-suite.py"
+                  mountPath: "/registration-test-suite.py"
+                  #subPath: "registration-test-suite.py"
                 - name: "test"
-                  mountPath: "/"
-                  subPath: "summary-test-suite.py"
+                  mountPath: "/summary-test-suite.py"
+                  #subPath: "summary-test-suite.py"
           restartPolicy: OnFailure
           volumes:
             - name: "test"
