@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: integrationtest
+  namespace: {{ include "registration.namespace" . }}
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: testcontainer
+              image: broadinstitute/python-requests
+              imagePullPolicy: IfNotPresent
+              command:
+                - python
+                - --version
+          restartPolicy: OnFailure
