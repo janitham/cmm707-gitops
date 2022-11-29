@@ -54,19 +54,46 @@ data:
         tester.updateUser()
         tester.deleteUser()
         print("Successfully ran the tests....")
-  summary-test-suite.py: "import requests\r\nimport json\r\n\r\nSERVICE_NAME = \"summary\"\r\nBUILD_VERSION
-    = \"\"\r\nDEPLOYMENT_PORT = \"8081\"\r\nHOST=\"summary\"\r\n\r\nheaders = {\r\n
-    \ 'Content-Type': 'application/json'\r\n}\r\n\r\nclass Tester:\r\n    outputJson
-    = None\r\n\r\n    def __init__(self):\r\n       self.msg = \"Default constructor\"\r\n
-    \      \r\n    def createdSummary(self):\r\n        url = \"http://\"+HOST+\":\"+DEPLOYMENT_PORT+\"/summary/created\"\r\n
-    \       response = requests.request(\"GET\", url, headers=headers, data={})\r\n
-    \       if response.status_code != 200:\r\n            raise \"Error summary created\"\r\n
-    \       \r\n    def updatedSummary(self) :\r\n        url = \"http://\"+HOST+\":\"+DEPLOYMENT_PORT+\"/summary/updated\"\r\n
-    \       response = requests.request(\"GET\", url, headers=headers, data={})\r\n
-    \       if response.status_code != 200:\r\n            raise \"Error summary updated\"\r\n
-    \       \r\n    def deletedSummary(self):\r\n        url = \"http://\"+HOST+\":\"+DEPLOYMENT_PORT+\"/summary/deleted\"\r\n
-    \       response = requests.request(\"GET\", url, headers=headers, data={})\r\n
-    \       if response.status_code != 200:\r\n            raise \"Error summary deleted\"\r\n
-    \       \r\nif __name__ == \"__main__\":\r\n    tester = Tester()\r\n    tester.createdSummary()\r\n
-    \   tester.updatedSummary()\r\n    tester.deletedSummary()\r\n    print(\"Successfully
-    ran the tests....\")"
+  summary-test-suite.py: |
+    import requests
+    import json
+
+    SERVICE_NAME = "summary"
+    BUILD_VERSION = ""
+    DEPLOYMENT_PORT = "8081"
+    HOST="summary"
+
+    headers = {
+      'Content-Type': 'application/json'
+    }
+
+    class Tester:
+        outputJson = None
+
+        def __init__(self):
+           self.msg = "Default constructor"
+
+        def createdSummary(self):
+            url = "http://"+HOST+":"+DEPLOYMENT_PORT+"/summary/created"
+            response = requests.request("GET", url, headers=headers, data={})
+            if response.status_code != 200:
+                raise "Error summary created"
+
+        def updatedSummary(self) :
+            url = "http://"+HOST+":"+DEPLOYMENT_PORT+"/summary/updated"
+            response = requests.request("GET", url, headers=headers, data={})
+            if response.status_code != 200:
+                raise "Error summary updated"
+
+        def deletedSummary(self):
+            url = "http://"+HOST+":"+DEPLOYMENT_PORT+"/summary/deleted"
+            response = requests.request("GET", url, headers=headers, data={})
+            if response.status_code != 200:
+                raise "Error summary deleted"
+
+    if __name__ == "__main__":
+        tester = Tester()
+        tester.createdSummary()
+        tester.updatedSummary()
+        tester.deletedSummary()
+        print("Successfully ran the tests....")
