@@ -16,4 +16,15 @@ spec:
               command:
                 - python
                 - --version
+              volumeMounts:
+                - name: "test"
+                  mountPath: "/registration-test-suite.py"
+                  subPath: "registration-test-suite.py"
+                - name: "test"
+                  mountPath: "/summary-test-suite.py"
+                  subPath: "summary-test-suite.py"
           restartPolicy: OnFailure
+          volumes:
+            - name: "test"
+              configMap:
+                name: "testsuites"
