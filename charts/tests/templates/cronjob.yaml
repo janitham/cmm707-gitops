@@ -13,20 +13,16 @@ spec:
             - name: testcontainer
               image: broadinstitute/python-requests
               imagePullPolicy: IfNotPresent
-              command: [ "/bin/sh", "-c", "cat","/registration/registration-test-suite.py" ]
+              command: [ "/bin/sh", "-c", "cat","/scripts/registration-test-suite.py" ]
               #command:
               #  - python
               #  - "/registration/registration-test-suite.py"
               volumeMounts:
-                - name: "test"
-                  mountPath: "/registration"
-                  subPath: "registration-test-suite.py"
-                - name: "test"
-                  mountPath: "/summary-test-suite.py"
-                  #subPath: "summary-test-suite.py"
+                - name: wrapper
+                  mountPath: /scripts
           restartPolicy: OnFailure
           volumes:
-            - name: "test"
+            - name: testsuites
               configMap:
-                name: "testsuites"
+                name: testsuites
                 defaultMode: 0744
