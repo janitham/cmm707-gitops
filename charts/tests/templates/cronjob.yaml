@@ -17,6 +17,9 @@ spec:
               command:
                 - python
                 - "/scripts/registration-test-suite.py"
+                - "&&"
+                - python
+                - "/scripts/summary-test-suite.py"
               volumeMounts:
                 - name: testsuites
                   mountPath: /scripts
