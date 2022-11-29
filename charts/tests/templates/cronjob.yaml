@@ -13,10 +13,10 @@ spec:
             - name: testcontainer
               image: broadinstitute/python-requests
               imagePullPolicy: IfNotPresent
-              command: [ "/bin/sh", "-c", "cat","/scripts/registration-test-suite.py" ]
-              #command:
-              #  - python
-              #  - "/registration/registration-test-suite.py"
+              #command: [ "/bin/sh", "-c", "cat","/scripts/registration-test-suite.py" ]
+              command:
+                - python
+                - "/scripts/registration-test-suite.py"
               volumeMounts:
                 - name: testsuites
                   mountPath: /scripts
