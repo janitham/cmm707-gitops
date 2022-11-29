@@ -13,17 +13,17 @@ spec:
             - name: testcontainer
               image: broadinstitute/python-requests
               imagePullPolicy: IfNotPresent
-              command: [ "/bin/sh", "-c", "pwd" ]
+              command: [ "/bin/sh", "-c", "ls" ]
               #command:
               #  - python
               #  - --version
-              #volumeMounts:
-              #  - name: "test"
-              #    mountPath: "/registration-test-suite.py"
-              #    subPath: "registration-test-suite.py"
-              #  - name: "test"
-              #    mountPath: "/summary-test-suite.py"
-              #    subPath: "summary-test-suite.py"
+              volumeMounts:
+                - name: "test"
+                  mountPath: "/"
+                  subPath: "registration-test-suite.py"
+                - name: "test"
+                  mountPath: "/"
+                  subPath: "summary-test-suite.py"
           restartPolicy: OnFailure
           volumes:
             - name: "test"
