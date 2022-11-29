@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: testsuites
+  namespace: {{ include "registration.namespace" . }}
+data:
+  registration-test-suite.py: "import requests\r\nimport json\r\n\r\nSERVICE_NAME
+    = \"registration\"\r\nBUILD_VERSION = \"\"\r\nDEPLOYMENT_PORT = \"8080\"\r\nHOST=\"localhost\"\r\n\r\ndefaultPayload
+    = json.dumps({\r\n      \"name\": \"charurika\",\r\n      \"description\": \"Indian\"\r\n})\r\n
+    \   \r\nheaders = {\r\n  'Content-Type': 'application/json'\r\n}\r\n\r\nclass
+    Tester:\r\n    outputJson = None\r\n\r\n    def __init__(self):\r\n       self.msg
+    = \"Default constructor\"\r\n       \r\n    def createVoter(self):\r\n        url
+    = \"http://\"+HOST+\":\"+DEPLOYMENT_PORT+\"/voters\"\r\n        response = requests.request(\"POST\",
+    url, headers=headers, data=defaultPayload)\r\n        if response.status_code
+    != 201:\r\n            raise \"Error creating voter\"\r\n        self.response
+    = response.text\r\n        \r\n    def updateUser(self) :\r\n        url = \"http://\"+HOST+\":\"+DEPLOYMENT_PORT+\"/voters\"\r\n
+    \       response = requests.request(\"PUT\", url, headers=headers, data=self.response)\r\n
+    \       if response.status_code != 200:\r\n            raise \"Error updating
+    voter\"\r\n        \r\n    def deleteUser(self):\r\n        user = json.loads(self.response)['id']\r\n
+    \       url = \"http://\"+HOST+\":\"+DEPLOYMENT_PORT+\"/voters/\" + user\r\n        response
+    = requests.request(\"DELETE\", url, headers=headers, data={})\r\n        if response.status_code
+    != 200:\r\n            raise \"Error deleting voter\"\r\n        \r\nif __name__
+    == \"__main__\":\r\n    tester = Tester()\r\n    tester.createVoter()\r\n    tester.updateUser()\r\n
+    \   tester.deleteUser()\r\n    print(\"Successfully ran the tests....\")"
+  summary-test-suite.py: "import requests\r\nimport json\r\n\r\nSERVICE_NAME = \"summary\"\r\nBUILD_VERSION
+    = \"\"\r\nDEPLOYMENT_PORT = \"8081\"\r\nHOST=\"localhost\"\r\n\r\nheaders = {\r\n
+    \ 'Content-Type': 'application/json'\r\n}\r\n\r\nclass Tester:\r\n    outputJson
+    = None\r\n\r\n    def __init__(self):\r\n       self.msg = \"Default constructor\"\r\n
+    \      \r\n    def createdSummary(self):\r\n        url = \"http://\"+HOST+\":\"+DEPLOYMENT_PORT+\"/summary/created\"\r\n
+    \       response = requests.request(\"GET\", url, headers=headers, data={})\r\n
+    \       if response.status_code != 200:\r\n            raise \"Error summary created\"\r\n
+    \       \r\n    def updatedSummary(self) :\r\n        url = \"http://\"+HOST+\":\"+DEPLOYMENT_PORT+\"/summary/updated\"\r\n
+    \       response = requests.request(\"GET\", url, headers=headers, data={})\r\n
+    \       if response.status_code != 200:\r\n            raise \"Error summary updated\"\r\n
+    \       \r\n    def deletedSummary(self):\r\n        url = \"http://\"+HOST+\":\"+DEPLOYMENT_PORT+\"/summary/deleted\"\r\n
+    \       response = requests.request(\"GET\", url, headers=headers, data={})\r\n
+    \       if response.status_code != 200:\r\n            raise \"Error summary deleted\"\r\n
+    \       \r\nif __name__ == \"__main__\":\r\n    tester = Tester()\r\n    tester.createdSummary()\r\n
+    \   tester.updatedSummary()\r\n    tester.deletedSummary()\r\n    print(\"Successfully
+    ran the tests....\")"
