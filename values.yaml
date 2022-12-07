@@ -1,6 +1,2 @@
 global:
   namespace: test
-  postgres:
-    username: "postgres"
-    database: postgres
-    port: '5432'
