@@ -28,9 +28,8 @@ spec:
               value: summary
             - name: SUMMARY_PORT
               value: "8081"
-            #- name: SPRING_DATA_MONGODB_USERNAME
-            #  value: admin
-            #- name: SPRING_DATA_MONGODB_PASSWORD
-            #  value: admin
+          envFrom:
+            - secretRef:
+                name: mongodb-registration
           ports:
             - containerPort: 8080
