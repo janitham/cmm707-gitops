@@ -24,9 +24,8 @@ spec:
           env:
             - name: SPRING_DATA_MONGODB_HOST
               value: mongodb.mongodb.svc.cluster.local
-            #- name: SPRING_DATA_MONGODB_USERNAME
-            #  value: admin
-            #- name: SPRING_DATA_MONGODB_PASSWORD
-            #  value: admin
+          envFrom:
+            - secretRef:
+                name: mongodb-summary
           ports:
             - containerPort: 8081
