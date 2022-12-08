@@ -19,6 +19,7 @@ data:
     })
 
     headers = {
+      'Authorization': 'Basic YWRtaW46cGFzc3dvcmQ=',
       'Content-Type': 'application/json'
     }
 
