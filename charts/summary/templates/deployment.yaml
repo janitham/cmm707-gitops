@@ -24,6 +24,8 @@ spec:
           env:
             - name: SPRING_DATA_MONGODB_HOST
               value: mongodb.mongodb.svc.cluster.local
+            - name: SPRING_DATA_MONGODB_DATABASE
+              value: "{{.Values.global.database}}"
           envFrom:
             - secretRef:
                 name: mongodb-summary
