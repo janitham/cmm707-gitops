@@ -1,3 +1,3 @@
 global:
   namespace: prod
-  database: dev
+  database: prod
