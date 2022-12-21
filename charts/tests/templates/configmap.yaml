@@ -19,7 +19,8 @@ data:
     })
 
     headers = {
-      'Content-Type': 'application/json'
+        'Authorization': 'Basic YWRtaW46cGFzc3dvcmQ=',
+        'Content-Type': 'application/json'
     }
 
     class Tester:
@@ -64,7 +65,8 @@ data:
     HOST="summary"
 
     headers = {
-      'Content-Type': 'application/json'
+        'Authorization': 'Basic YWRtaW46cGFzc3dvcmQ=',
+        'Content-Type': 'application/json'
     }
 
     class Tester:
